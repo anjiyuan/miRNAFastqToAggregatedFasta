@@ -39,7 +39,7 @@ To build the project from source, follow these steps:
 git clone https://github.com/anjiyuan/miRNAFastqToAggregatedFasta.git
 cd miRNAFastqToAggregatedFasta
 ```
-Build the Project:
+2. Build the Project:
 Use Maven to build the project:
 ```sh
 mvn clean install
