@@ -25,7 +25,7 @@ public class miRNAFastqToAggregatedFasta {
     public static void main(String[] args) throws IOException {
         String dir, output_fn;
         if (args.length != 2) {
-            System.out.println("Usage: java -cp xxx/miRPlant2-1.0.jar org.qut.mirplant2.fastqTofa folder output_filename");
+            System.out.println("Usage: java -cp target/miRNAFastqToAggregatedFasta-1.0.jar qut.miRNAFastqToAggregatedFasta.miRNAFastqToAggregatedFasta fastq_folder prefix_output_filename");
             return;
         }
         dir = args[0];
@@ -46,7 +46,7 @@ public class miRNAFastqToAggregatedFasta {
                 }
             }
         }
-        BufferedWriter bw = new BufferedWriter(new FileWriter(output_fn));
+        BufferedWriter bw = new BufferedWriter(new FileWriter(output_fn+".aggregated.fa"));
         int rec_no = 0;
         for(String seq : results.keySet()){
             bw.write(">t"+(rec_no++)  +"\t"+results.get(seq)+ "\n");
