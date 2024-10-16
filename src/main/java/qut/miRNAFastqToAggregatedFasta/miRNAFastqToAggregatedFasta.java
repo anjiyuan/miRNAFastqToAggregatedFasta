@@ -136,9 +136,11 @@ public class miRNAFastqToAggregatedFasta {
         int biggest_count = 0;
         for (int line_no = 0; line_no < 20; line_no++) {
             for (int i = 0; i < Math.min(30, find_adapter_from_1000[line_no].length()); i++) {
+//System.out.println("i="+i);               
                 String test_str = find_adapter_from_1000[line_no].substring(i, Math.min(find_adapter_from_1000[line_no].length(), i + 15));
                 int num_match = 0;
                 for (String find_adapter_from_10001 : find_adapter_from_1000) {
+//System.out.println("find_adapter_from_10001="+find_adapter_from_10001);               
                     if ((find_adapter_from_10001.contains(test_str)) && (find_adapter_from_10001.indexOf(test_str) < 35)) {
                         num_match++;
                     }
