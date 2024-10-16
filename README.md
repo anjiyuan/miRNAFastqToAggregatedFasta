@@ -13,8 +13,8 @@ miRNAFastqToAggregatedFasta is a Java application for generating an aggregated F
 
 ### Prerequisites
 
-- Java Development Kit (JDK) 11 or higher [how to install JDK](https://bioweb01.qut.edu.au/Install_java.html) 
-- Maven [how to install Maven](https://bioweb01.qut.edu.au/Install_maven.html)
+- Java Development Kit (JDK) 11 or higher [(how to install JDK)](https://bioweb01.qut.edu.au/Install_java.html) 
+- Maven [(how to install Maven)](https://bioweb01.qut.edu.au/Install_maven.html)
 
 ### Clone the Repository
 
