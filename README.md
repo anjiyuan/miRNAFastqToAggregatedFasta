@@ -5,9 +5,8 @@ miRNAFastqToAggregatedFasta is a Java application for generating an aggregated F
 ## Table of Contents
 
 - [Installation](#installation)
+- [Building](#building)
 - [Usage](#usage)
-- [Building from Source](#building-from-source)
-- [License](#license)
 
 ## Installation
 
@@ -22,16 +21,7 @@ miRNAFastqToAggregatedFasta is a Java application for generating an aggregated F
 git clone https://github.com/anjiyuan/miRNAFastqToAggregatedFasta.git
 cd miRNAFastqToAggregatedFasta
 ```
-## Usage
-To use the miRNAFastqToAggregatedFasta application, run the following command:
-```sh
-java -cp target/miRNAFastqToAggregatedFasta-1.0.jar qut.miRNAFastqToAggregatedFasta.miRNAFastqToAggregatedFasta <fastq_folder> <prefix_output_filename>
-```
-Example
-```sh
-java -cp target/miRNAFastqToAggregatedFasta-1.0.jar qut.miRNAFastqToAggregatedFasta.miRNAFastqToAggregatedFasta demoData demoData/demo.aggregated.fa
-```
-## Building from Source
+## Building
 To build the project from source, follow these steps:
 
 1. Clone the Repository:
@@ -45,8 +35,12 @@ Use Maven to build the project:
 mvn clean install
 ```
 This will compile the source code and package the application into a JAR file located in the target directory.
-
-3. Run the Application:
+## Usage
+To use the miRNAFastqToAggregatedFasta application, run the following command:
 ```sh
 java -cp target/miRNAFastqToAggregatedFasta-1.0.jar qut.miRNAFastqToAggregatedFasta.miRNAFastqToAggregatedFasta <fastq_folder> <prefix_output_filename>
+```
+Example
+```sh
+java -cp target/miRNAFastqToAggregatedFasta-1.0.jar qut.miRNAFastqToAggregatedFasta.miRNAFastqToAggregatedFasta demoData demoData/demo
 ```
