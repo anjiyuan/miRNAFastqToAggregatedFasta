@@ -20,5 +20,7 @@ WORKDIR /app
 COPY --from=build /app/target/miRNAFastqToAggregatedFasta-1.0.jar /app/miRNAFastqToAggregatedFasta-1.0.jar
 
 # Set the entry point for the container
-#ENTRYPOINT ["java", "-cp", "/app/miRNAFastqToAggregatedFasta-1.0.jar", "qut.miRNAFastqToAggregatedFasta.miRNAFastqToAggregatedFasta"]
-CMD ["bash"]
+ENTRYPOINT ["java", "-cp", "/app/miRNAFastqToAggregatedFasta-1.0.jar", "qut.miRNAFastqToAggregatedFasta.miRNAFastqToAggregatedFasta"]
+
+# Specify default parameters (can be overridden)
+CMD []
