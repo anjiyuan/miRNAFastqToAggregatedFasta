@@ -16,8 +16,12 @@ FROM openjdk:11-jre-slim
 # Set the working directory
 WORKDIR /app
 
+# Create the demoData directory and copy files
+RUN mkdir -p /app/demoData
+
 # Copy the built JAR file from the build stage
 COPY --from=build /app/target/miRNAFastqToAggregatedFasta-1.0.jar /app/miRNAFastqToAggregatedFasta-1.0.jar
+COPY --from=build /app/demoData /app/demoData
 
 # Set the entry point for the container
 ENTRYPOINT ["java", "-cp", "/app/miRNAFastqToAggregatedFasta-1.0.jar", "qut.miRNAFastqToAggregatedFasta.miRNAFastqToAggregatedFasta"]

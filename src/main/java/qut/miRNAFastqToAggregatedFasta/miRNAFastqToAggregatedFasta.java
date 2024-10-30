@@ -23,13 +23,19 @@ import java.util.zip.GZIPInputStream;
 public class miRNAFastqToAggregatedFasta {
 
     public static void main(String[] args) throws IOException {
+        boolean need_trim = true;
         String dir, output_fn;
         if (args.length != 2) {
             System.out.println("Usage: java -cp target/miRNAFastqToAggregatedFasta-1.0.jar qut.miRNAFastqToAggregatedFasta.miRNAFastqToAggregatedFasta fastq_folder prefix_output_filename");
             return;
         }
-        dir = args[0];
-        output_fn = args[1];
+        int args_no = 0;
+        if(args[0].equals("--nonTrim")){
+            need_trim = false;
+            args_no = 1;
+        }
+        dir = args[args_no];
+        output_fn = args[args_no + 1];
         miRNAFastqToAggregatedFasta fTf = new miRNAFastqToAggregatedFasta();
         Map<String, Integer> results = new TreeMap<>();
         File folder = new File(dir);
@@ -38,8 +44,13 @@ public class miRNAFastqToAggregatedFasta {
                 String fn = file.getCanonicalPath();
                 if (fn.endsWith(".fq") || fn.endsWith(".fastq") || fn.endsWith(".fq.gz") || fn.endsWith(".fastq.gz")) {
                     System.out.println(fn);
-                    String adapter = fTf.getAdapter(fn);
-                    System.out.println("adapter=" + adapter);
+                    String adapter = "noTrim";
+                    if(need_trim){
+                        adapter = fTf.getAdapter(fn);
+                        System.out.println("adapter=" + adapter);
+                    }else{
+                        System.out.println("no trim undertaken");
+                    }
                     if (!adapter.isEmpty()) {
                         fTf.toFa(fn, adapter, results);
                     }
@@ -67,7 +78,10 @@ public class miRNAFastqToAggregatedFasta {
         while((line = br.readLine()) != null){
             line = br.readLine();
             if(!line.contains("N")){
-                int pos = getSeq(line, adapter);
+                int pos = line.length();
+                if(!adapter.equals("noTrim")){
+                    pos = getSeq(line, adapter);
+                }
                 if((pos >= 18) && (pos < 25)){
                     String seq = line.substring(0, pos);
                     if(results.get(seq) == null){
