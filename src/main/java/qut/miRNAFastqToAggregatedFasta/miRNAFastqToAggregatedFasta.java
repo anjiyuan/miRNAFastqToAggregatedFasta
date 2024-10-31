@@ -39,6 +39,10 @@ public class miRNAFastqToAggregatedFasta {
         miRNAFastqToAggregatedFasta fTf = new miRNAFastqToAggregatedFasta();
         Map<String, Integer> results = new TreeMap<>();
         File folder = new File(dir);
+        if(!folder.exists()){
+            System.err.println("folder:" + dir + " does not exist");
+            return;
+        }
         for (File file : folder.listFiles()) {
             if (file.isFile()) {
                 String fn = file.getCanonicalPath();
